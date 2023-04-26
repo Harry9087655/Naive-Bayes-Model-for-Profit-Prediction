@@ -20,7 +20,7 @@ st.set_page_config(layout="wide")
 
 # In[31]:
 
-mypath=r"C:\Users\Harry Xu\Desktop\data"
+mypath=""
 sales=pd.read_csv(mypath+"\SalesForCourse_quizz_table.csv")
 sales=sales.drop(['index','Column1'],axis=1)
 sales=sales.drop(34866,axis=0)
