@@ -4,3 +4,4 @@ pandas==1.5.2
 plotly_express==0.4.1
 numpy==1.23.5
 plotly==5.11.0
+scipy==1.9.3
