@@ -342,11 +342,11 @@ if selected=='Conclusion':
     st.markdown("To summarize, these five factors produce the highest accuracy, mainly because they are each independent of each other. As we have seen, 'Sub Category' and 'Month' contribute a lot to profit, thus we could focus on these two variables and see which category and month have the best sales.")
     col_1,col_2,col_3=st.columns([10,10,10])
     col_1.subheader("Most Profitable Category")
-    col_1.dataframe(sales.groupby(['Sub Category']).mean()['Profit'].sort_values(ascending=False))
+    col_1.dataframe(sales.groupby(['Sub Category'])['Profit'].mean().sort_values(ascending=False))
     col_2.subheader("Most Profitable Month")
-    col_2.dataframe(sales.groupby(['Month']).mean()['Profit'].sort_values(ascending=False))
+    col_2.dataframe(sales.groupby(['Month'])['Profit'].mean().sort_values(ascending=False))
     col_3.subheader("Most Profitable Month-Category Combined")
-    col_3.dataframe(sales.groupby(['Month','Sub Category']).mean()['Profit'].sort_values(ascending=False))
+    col_3.dataframe(sales.groupby(['Month','Sub Category'])['Profit'].mean().sort_values(ascending=False))
     st.markdown("Bike Racks turn out to be the most profitable product category, and May is the most profitable month. However, when considering both factors, it appears that it is best to sell Bike Racks in July.")
 
 
