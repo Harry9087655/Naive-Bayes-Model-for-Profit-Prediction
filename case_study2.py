@@ -338,7 +338,7 @@ if selected=='Data Analysis':
 
 
 if selected=='Conclusion':
-    st.title("Conculsion")
+    st.title("Conclusion")
     st.markdown("To summarize, these five factors produce the highest accuracy, mainly because they are each independent of each other. As we have seen, 'Sub Category' and 'Month' contribute a lot to profit, thus we could focus on these two variables and see which category and month have the best sales.")
     col_1,col_2,col_3=st.columns([10,10,10])
     col_1.subheader("Most Profitable Category")
