@@ -222,7 +222,7 @@ if selected=='Exploratory Analysis':
             chi_explore=[[i]+list(stats.chi2_contingency(pd.crosstab(sales[i],sales[key_target]))[0:2]) for i in key_chi]
             
             chi_data=pd.DataFrame(chi_explore,columns=['Predictor','Chi-Square Stat','P-Value'])
-            fig5=px.bar(chi_data,x='Predicator',y='Chi-Square Stat',hover_name='Predictor',hover_data=['P-Value'],color='Predicator',title=f'<b> Chi-Square Value of Predicator Variables and {var_option8}</b>',log_y=logy)
+            fig5=px.bar(chi_data,x='Predictor',y='Chi-Square Stat',hover_name='Predictor',hover_data=['P-Value'],color='Predicator',title=f'<b> Chi-Square Value of Predicator Variables and {var_option8}</b>',log_y=logy)
             fig5.update_traces(hovertemplate="<b>%{x}</b> <br><br> Chi-Square Stat: %{y:.2f}<br> P-Value: %{customdata:.2e} <extra></extra>")
             fig5.update_xaxes(title_text='<b>Predictor</b>')
             fig5.update_yaxes(title_text='<b>Chi-Square Stat</b>')
