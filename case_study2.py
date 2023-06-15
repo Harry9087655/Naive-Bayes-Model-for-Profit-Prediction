@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[30]:
-
-
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -20,8 +14,8 @@ st.set_page_config(layout="wide")
 
 # In[31]:
 
-mypath=""
-sales=pd.read_csv(mypath+"SalesForCourse_quizz_table.csv")
+mypath=r"C:\Users\Harry Xu\Desktop\data"
+sales=pd.read_csv(mypath+"\SalesForCourse_quizz_table.csv")
 sales=sales.drop(['index','Column1'],axis=1)
 sales=sales.drop(34866,axis=0)
 sales_co=sales.copy()
@@ -222,7 +216,7 @@ if selected=='Exploratory Analysis':
             chi_explore=[[i]+list(stats.chi2_contingency(pd.crosstab(sales[i],sales[key_target]))[0:2]) for i in key_chi]
             
             chi_data=pd.DataFrame(chi_explore,columns=['Predictor','Chi-Square Stat','P-Value'])
-            fig5=px.bar(chi_data,x='Predictor',y='Chi-Square Stat',hover_name='Predictor',hover_data=['P-Value'],color='Predicator',title=f'<b> Chi-Square Value of Predicator Variables and {var_option8}</b>',log_y=logy)
+            fig5=px.bar(chi_data,x='Predictor',y='Chi-Square Stat',hover_name='Predictor',hover_data=['P-Value'],color='Predictor',title=f'<b> Chi-Square Value of Predictor Variables and {var_option8}</b>',log_y=logy)
             fig5.update_traces(hovertemplate="<b>%{x}</b> <br><br> Chi-Square Stat: %{y:.2f}<br> P-Value: %{customdata:.2e} <extra></extra>")
             fig5.update_xaxes(title_text='<b>Predictor</b>')
             fig5.update_yaxes(title_text='<b>Chi-Square Stat</b>')
@@ -338,15 +332,15 @@ if selected=='Data Analysis':
 
 
 if selected=='Conclusion':
-    st.title("Conclusion")
+    st.title("Conculsion")
     st.markdown("To summarize, these five factors produce the highest accuracy, mainly because they are each independent of each other. As we have seen, 'Sub Category' and 'Month' contribute a lot to profit, thus we could focus on these two variables and see which category and month have the best sales.")
     col_1,col_2,col_3=st.columns([10,10,10])
     col_1.subheader("Most Profitable Category")
-    col_1.dataframe(sales.groupby(['Sub Category'])['Profit'].mean().sort_values(ascending=False))
+    col_1.dataframe(sales.groupby(['Sub Category']).mean()['Profit'].sort_values(ascending=False))
     col_2.subheader("Most Profitable Month")
-    col_2.dataframe(sales.groupby(['Month'])['Profit'].mean().sort_values(ascending=False))
+    col_2.dataframe(sales.groupby(['Month']).mean()['Profit'].sort_values(ascending=False))
     col_3.subheader("Most Profitable Month-Category Combined")
-    col_3.dataframe(sales.groupby(['Month','Sub Category'])['Profit'].mean().sort_values(ascending=False))
+    col_3.dataframe(sales.groupby(['Month','Sub Category']).mean()['Profit'].sort_values(ascending=False))
     st.markdown("Bike Racks turn out to be the most profitable product category, and May is the most profitable month. However, when considering both factors, it appears that it is best to sell Bike Racks in July.")
 
 
@@ -356,13 +350,3 @@ if selected=='Bibliography':
     st.markdown("The dataset is downloaded from https://www.kaggle.com/datasets/thedevastator/analyzing-customer-spending-habits-to-improve-sa?resource=download")
     st.markdown("[1] https://www.grandviewresearch.com/industry-analysis/sports-equipment-market#:~:text=The%20global%20sports%20equipment%20market%20size%20was%20estimated%20at%20USD,largest%20sports%20equipment%20market%20share%3F")
     
-    
-    
-    
-    
-
-
-
-
-
-
